@@ -1,0 +1,54 @@
+version: '3'
+services:
+
+  # WordPress
+  wordpress:
+    container_name: wp_${WP_PROJECTS_NAME-project}
+    image: wordpress:latest
+    restart: always
+    volumes:
+      - ${PWD}/wp/.htaccess:/var/www/html/.htaccess
+      - ${PWD}/wp/index.php:/var/www/html/index.php
+      - ${PWD}/wp/phpinfo.php:/var/www/html/phpinfo.php
+      - ${PWD}/config/custom.ini:/usr/local/etc/php/php.ini
+      - ${WP_PROJECTS_PATH-./wp}:/var/www/html
+    ports:
+      - ${WP_PROJECTS_PORT-8001}:80
+    networks:
+      - wordpress
+
+  # Mysql
+  mysql:
+    container_name: mysql_${WP_PROJECTS_NAME-project}
+    image: mysql:latest
+    restart: always
+    ports:
+      - ${MYSQL_PROJECTS_PORT-33061}:3306
+    volumes:
+      - ${MYSQL_PROJECTS_PATH-./mysql}/data/mysql:/var/lib/mysql
+      - ${MYSQL_PROJECTS_PATH-./mysql}/logs/mysql:/var/log/mysql
+      - ${MYSQL_PROJECTS_PATH-./mysql}/backups:/backups
+    environment:
+      MYSQL_ROOT_PASSWORD: ${WP_PROJECTS_PASSWORD-toor}
+    networks:
+      - wordpress
+
+  # phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_${WP_PROJECTS_NAME-project}
+    restart: always
+    ports:
+      - ${PHPMYADMIN_PROJECTS_PORT-8101}:80
+    environment:
+      PMA_HOST: mysql
+      UPLOAD_LIMIT: 500M
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    networks:
+      - wordpress
+
+networks:
+  wordpress:

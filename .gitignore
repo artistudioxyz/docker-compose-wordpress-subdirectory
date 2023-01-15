@@ -1,0 +1,10 @@
+# IDE
+/.idea/
+/.vscode/
+
+# Extras
+.env
+
+# Dummy
+*.DS_Store
+.DS_Store
