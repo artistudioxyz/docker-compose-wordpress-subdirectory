@@ -6,6 +6,6 @@
     <title>Wordpress</title>
 </head>
 <body>
-<img src="https://s.w.org/style/images/about/WordPress-logotype-standard.png" alt="Wordpress">
+<img src="/WordPress.png" alt="Wordpress">
 </body>
 </html>

@@ -9,6 +9,7 @@ services:
     volumes:
       - ${PWD}/wp/.htaccess:/var/www/html/.htaccess
       - ${PWD}/wp/index.php:/var/www/html/index.php
+      - ${PWD}/wp/WordPress.png:/var/www/html/WordPress.png
       - ${PWD}/wp/phpinfo.php:/var/www/html/phpinfo.php
       - ${PWD}/config/custom.ini:/usr/local/etc/php/php.ini
       - ${WP_PROJECTS_PATH-./wp}:/var/www/html

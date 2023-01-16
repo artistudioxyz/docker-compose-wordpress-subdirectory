@@ -1,5 +1,7 @@
 # 🐳 Docker Compose WordPress in Subdirectory
 
+![WordPress](wp/WordPress.png)
+
 ## 📝 Installation
 - Copy file `cp .env-sample .env`
 - Change `.env` details
