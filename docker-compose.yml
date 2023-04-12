@@ -4,7 +4,8 @@ services:
   # WordPress
   wordpress:
     container_name: wp_${WP_PROJECTS_NAME-project}
-    image: wordpress:latest
+    image: artistudioxyz/wordpress-subdirectory
+    build: .
     restart: always
     volumes:
       - ${PWD}/wp/.htaccess:/var/www/html/.htaccess

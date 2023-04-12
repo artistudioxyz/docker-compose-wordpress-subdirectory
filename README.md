@@ -2,6 +2,8 @@
 
 ![WordPress](wp/WordPress.png)
 
+WordPress docker compose with WP-CLI.
+
 ## 📝 Installation
 - Copy file `cp .env-sample .env`
 - Change `.env` details
